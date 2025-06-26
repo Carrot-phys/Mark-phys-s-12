@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+
 body {
-    font: 20px "Gill Sans", Verdana, sans-serif;
+    font: 20px "Comfortaa", Comfortaa, sans-serif;
     line-height: 1.8;
-    color: #000000;
+    color: #177E89;
     background-color: #F0F4EF;
     padding-top: 0px !important;
   }
+
 
 .textcontainer {
   padding: 2% 10%;;
@@ -14,7 +18,7 @@ p {font-size: 16px;}
 .margin {margin-bottom: 30px;}
 
 a {
-  color: #162521;
+  color: #177E89;
 }
 
 .container-fluid {
@@ -23,8 +27,8 @@ a {
 }
 
 nav {
-  background-color: #dcdcdc;
-  color: #EEE7E8;
+  background-color: #F0F4EF;
+  color: #177E89;
   padding: 50px 0px;
 }
 
@@ -37,23 +41,23 @@ nav {
 .nav-title{
   margin-left: 15px;
   margin-right: 15px;
-  color: #000000;
+  color: #409AA3;
 }
 
 .nav-link {
-  border: 3px outset #a3a3a3;
+  border: 3px outset #409AA3;
   border-radius: 20px;
   padding: 10px 30px;
-  background-color: #a3a3a3;
+  background-color: #409AA3;
   color: #EEE7E8;
   transition: 0.3s;
 }
 
 .nav-link:hover {
-  border: 3px outset #FFFFFF;
+  border: 3px outset #177E89;
   border-radius: 20px;
   padding: 10px 30px;
-  background-color: #a3a3a3;
+  background-color: #177E89;
   transition: 0.3s;
 }
 
