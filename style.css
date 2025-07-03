@@ -62,19 +62,19 @@ nav {
 }
 
 #btn {
-  border: 3px outset #FFFFFF;
+  border: 3px outset #409AA3;
   border-radius: 40px;
   padding: 10px 30px;
-  background-color: #a3a3a3;
-  color: #177E89;
+  background-color: #409AA3;
+  color: #EEE7E8;
   transition: 0.3s;
 }
 
 #btn:hover {
-  border: 3px inset #FFFFFF;
+  border: 3px inset #177E89;
   border-radius: 40px;
   padding: 10px 30px;
-  background-color: #a3a3a3;
+  background-color: #177E89;
   transition: 0.3s;
 }
 
