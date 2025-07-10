@@ -105,6 +105,15 @@ code {
   font-style: italic;
 }
 
+pre code {
+  background-color: #dad9d9;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: monospace;
+  display: block;
+  overflow-x: auto;
+}
+
 #aboutme {
   padding: 20px;
 }

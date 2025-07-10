@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
 
 <title>PS70: Intro to Digital Fabrication </title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,13 +26,46 @@
 <p class="margin">   </p>
 
 <h3>Week 4: Microcontroller Programming</h3>
+<br>
+<h4>AM Radio Receiver with an Arduino</h4>
 
-<h4>[Do Something with an arduino]</h4>
+<p>For this project, I wanted to build a simple AM radio receiver using basic electronic components and read the signal using an Arduino. I learned about how LC circuits can be used to pick up specific radio frequencies and how to detect and process those signals.</p>
+<br>
+<p>To tune into AM radio stations, I used a combination of a coil (inductor) and a capacitor. These two components together form what's called an LC circuit, which can be tuned to resonate at a specific frequency. The frequency it picks up depends on the values of the inductor and the capacitor.</p>
 
+<image style = "width: 35%"src = "./formula.jpg" alt = "formula"> </image>
+<h4> Building a Circuit</h4>
+<p>The circuit was actually quite simple once I understood how each part worked:</p>
+<p>Antenna and LC Tuner</p>
+<p>I connected an antenna to a coil (L1), and the coil to the variable capacitor (C1). This is what selected the radio signal.</p>
+<p>Filter and Arduino Input</p>
+<p>Then, I added a resistor and a capacitor to smooth out the signal. The result was connected to A0 on the Arduino, where it reads the voltage level.</p>
+<image style = "width: 55%"src = "./schematic.jpg" alt = "formula"> </image>
+<br>
+<br>
+<h4>Arduino Code Without Delay Function </h4>
+<pre>
+  <codec lass="language-cpp">
+    int curTime = millis();
+int prevTime = 0;
+int antVal;
+const int inpPin = A0;
 
-
-
-
+void setup() {
+  Serial.begin(9600);
+  pinMode(inpPin; INPUT);
+}
+void loop() {
+  while curTime = prevTime + 1000; 
+  antVal = analogRead(inpPin);
+  Serial.println(antVal);
+  prevTime = curTime
+}
+  </code>
+</pre>
+<h4>Pictures</h4>
+<image style = "width: 45%"src = "./schematic.jpg" alt = "formula"> </image>
+<image style = "width: 45%"src = "./schematic.jpg" alt = "formula"> </image>
 </div>
 </xmp>
 </body>
