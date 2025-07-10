@@ -63,9 +63,78 @@ void loop() {
 }
   </code>
 </pre>
+<h3>But</h3>
+<p>Unfortunately, since the noise in the workshop is very strong and I had no easy way of getting a proper antenna but to combining a bunch of wires together, the signal wasn't really strong, up to an extent where it is impossible to diferenciate it from the noise. Hence, I did another circuit:</p>
+<h4>Controled LED blinking</h4>
+<p>For this project I implemented a potentiometer controled led, where the potentiometer controlled the frequency of the blinking. The circuit also involves a button, by pressing which, the blinking stops.</p>
+<h4>Circuit</h4>
+<image style = "width: 55%"src = "./circuit2.jpg" alt = "formula"> </image>
+<br>
+<h4>Code</h4>
+<pre>
+  <codec lass="language-cpp">
+const int ledPin = 6;       
+const int buttonPin = D1;     
+const int analogPin = A0;    
+
+unsigned long previousBlink = 0;
+unsigned long previousSerial = 0;
+
+unsigned long blinkInterval = 500;   
+bool ledState = LOW;
+bool blinkingEnabled = true;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  pinMode(buttonPin, INPUT_PULLUP); 
+  Serial.begin(9600);
+}
+
+void loop() {
+  unsigned long currentMillis = millis();
+
+  
+  static bool lastButtonState = HIGH;
+  static unsigned long lastDebounceTime = 0;
+  const unsigned long debounceDelay = 50;
+
+  bool reading = digitalRead(buttonPin);
+  if (reading != lastButtonState) {
+    lastDebounceTime = currentMillis;
+  }
+  if ((currentMillis - lastDebounceTime) > debounceDelay) {
+    static bool buttonState = HIGH;
+    if (reading != buttonState) {
+      buttonState = reading;
+      if (buttonState == LOW) { 
+        blinkingEnabled = !blinkingEnabled;
+      }
+    }
+  }
+  lastButtonState = reading;
+
+  int sensorValue = analogRead(analogPin);
+  blinkInterval = map(sensorValue, 0, 1023, 100, 1000);
+
+  if (blinkingEnabled && (currentMillis - previousBlink >= blinkInterval)) {
+    previousBlink = currentMillis;
+    ledState = !ledState;
+    digitalWrite(ledPin, ledState);
+  }
+  else if (!blinkingEnabled) {
+    digitalWrite(ledPin, LOW); 
+  }
+
+  if (currentMillis - previousSerial >= 1000) {
+    previousSerial = currentMillis;
+    Serial.print("Sensor value: ");
+    Serial.println(sensorValue);
+  }
+}
+  </code>
+</pre>
 <h4>Pictures</h4>
-<image style = "width: 45%"src = "./schematic.jpg" alt = "formula"> </image>
-<image style = "width: 45%"src = "./schematic.jpg" alt = "formula"> </image>
+<image style = "width: 55%"src = "./ledpick.jpg" alt = "led pickture"> </image>
 </div>
 </xmp>
 </body>
